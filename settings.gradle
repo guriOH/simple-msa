@@ -1,0 +1,4 @@
+rootProject.name = 'simple-msa'
+include 'bbs-admin'
+include 'bbs-core'
+include 'bbs-web'
