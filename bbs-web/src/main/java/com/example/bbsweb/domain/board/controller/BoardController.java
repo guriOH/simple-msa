@@ -1,4 +1,4 @@
-package com.example.bbsweb.board.controller;
+package com.example.bbsweb.domain.board.controller;
 
 
 import com.example.bbscore.domain.board.service.BoardService;

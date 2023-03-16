@@ -15,6 +15,5 @@ public class WebApplication {
                 .bannerMode(Banner.Mode.CONSOLE)
                 .sources(BbsCoreApplication.class, WebApplication.class)
                 .run(args);
-
     }
 }
