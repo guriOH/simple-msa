@@ -1,39 +1,85 @@
-
-// 빌드 시
 buildscript {
-    ext {
-        springBootVersion = '3.0.4'
+    ext{
+        springBootVersion = '2.7.9'
     }
+
     repositories {
         mavenCentral()
     }
+
     dependencies {
-        classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
-        classpath "io.spring.gradle:dependency-management-plugin:1.0.4.RELEASE"
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath "io.spring.gradle:dependency-management-plugin:0.5.2.RELEASE"
     }
 }
 
-// 하위 모든 프로젝트 공통 세팅
+
+allprojects { }
+
 subprojects {
-    apply plugin: 'java'
+    apply plugin: 'java-library'
     apply plugin: 'org.springframework.boot'
     apply plugin: 'io.spring.dependency-management'
 
-    group 'org.example'
-    version '1.0-SNAPSHOT'
-
-    sourceCompatibility = '17'
-    targetCompatibility = '17'
     compileJava.options.encoding = 'UTF-8'
+
+    sourceCompatibility = 11
+    targetCompatibility = 11
+
+    project.version = '1.0.1.RELEASE'
 
     repositories {
         mavenCentral()
     }
 
-    // 하위 모듈에서 공통으로 사용하는 세팅 추가
+
     dependencies {
+
+        // lombok
         compileOnly 'org.projectlombok:lombok'
         annotationProcessor 'org.projectlombok:lombok'
+
+        // util
+        implementation 'org.apache.commons:commons-lang3:3.11'
+        implementation 'org.apache.commons:commons-collections4:4.4'
+
+
+        implementation 'org.springframework.boot:spring-boot-starter'
+        testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    }
+}
+
+
+project(":bbs-core") {
+    bootJar.enabled = false
+    jar.enabled = true
+
+    dependencies {
+        implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+        // https://mvnrepository.com/artifact/mysql/mysql-connector-java
+        implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.32'
     }
 
+    tasks.register("prepareKotlinBuildScriptModel"){}
+}
+
+project(":bbs-web") {
+
+    dependencies {
+        implementation project(':bbs-core')
+        implementation 'org.springframework.boot:spring-boot-starter-web'
+    }
+
+    tasks.register("prepareKotlinBuildScriptModel"){}
+}
+
+
+project(":bbs-admin") {
+
+    dependencies {
+        implementation project(':bbs-core')
+        implementation 'org.springframework.boot:spring-boot-starter-web'
+    }
+
+    tasks.register("prepareKotlinBuildScriptModel"){}
 }
