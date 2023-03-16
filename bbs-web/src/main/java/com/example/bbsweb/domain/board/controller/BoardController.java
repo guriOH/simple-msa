@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
 @RequiredArgsConstructor
-@RestController
+@Controller
 @RequestMapping("/board")
 public class BoardController {
 
@@ -23,8 +25,9 @@ public class BoardController {
     private ApplicationContext applicationContext;
 
     @GetMapping("/test")
-    public String test() {
-        boardService.test();
-        return "";
+    public String test(Model model) {
+
+        model.addAttribute("hello", "안뇽");
+        return "/hello";
     }
 }
