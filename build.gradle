@@ -44,6 +44,13 @@ subprojects {
         implementation 'org.apache.commons:commons-collections4:4.4'
 
 
+        // logging
+        implementation 'org.tinylog:tinylog-api:2.6.0'
+        implementation 'org.tinylog:tinylog-impl:2.6.0'
+        implementation 'org.slf4j:slf4j-api:1.7.36'
+        runtimeOnly 'org.tinylog:slf4j-tinylog:2.6.0'
+
+
         implementation 'org.springframework.boot:spring-boot-starter'
         testImplementation 'org.springframework.boot:spring-boot-starter-test'
     }

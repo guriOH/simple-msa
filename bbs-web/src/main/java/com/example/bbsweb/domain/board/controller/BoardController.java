@@ -9,9 +9,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.tinylog.Logger;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -29,5 +28,14 @@ public class BoardController {
 
         model.addAttribute("hello", "안뇽");
         return "/hello";
+    }
+
+    @GetMapping("/test2")
+    public void test2(){
+        Logger.trace("Hello World!");
+        Logger.debug("Hello World!");
+        Logger.info("Hello World!");
+        Logger.warn("Hello World!");
+        Logger.error("Hello World!");
     }
 }
