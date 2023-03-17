@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Date;
 
 @NoArgsConstructor
 @Data
@@ -33,22 +34,22 @@ public class Article {
     private long hitCount;
     @Basic
     @Column(name = "is_public", nullable = false)
-    private String isPublic;
+    private Boolean isPublic;
     @Basic
     @Column(name = "is_deleted", nullable = false)
-    private String isDeleted;
+    private Boolean isDeleted;
     @Basic
     @Column(name = "registered_user_number", nullable = false)
     private long registeredUserNumber;
     @Basic
     @Column(name = "registered_datetime", nullable = false)
-    private Timestamp registeredDatetime;
+    private Date registeredDatetime;
     @Basic
     @Column(name = "last_updated_user_number", nullable = false)
     private long lastUpdatedUserNumber;
     @Basic
     @Column(name = "last_updated_datetime", nullable = false)
-    private Timestamp lastUpdatedDatetime;
+    private Date lastUpdatedDatetime;
     @Basic
     @Column(name = "board_id1", nullable = false)
     private long boardId1;
