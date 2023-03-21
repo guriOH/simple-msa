@@ -11,13 +11,21 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.tinylog.Logger;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Slf4j
 @RequiredArgsConstructor
 @Controller
-@RequestMapping("/board")
+@RequestMapping("/bbs")
 public class BoardController {
 
     private final BoardService boardService;
+
+
+    @GetMapping
+    public String getList(HttpServletRequest request){
+        return "/contents/bbs";
+    }
 
     @PostMapping("/register")
     public String register(@RequestBody BoardInsertDto boardInsertDto){
