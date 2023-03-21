@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head th:replace="common/fragments/common_head :: commonHead">
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row flex-nowrap">
+        <th:block th:replace="common/fragments/sidebar :: sidebarFragment"></th:block>
+        <div class="col py-3">
+            <th:block layout:fragment="content"/>
+        </div>
+    </div>
+</div>>
+</body>
+</html>

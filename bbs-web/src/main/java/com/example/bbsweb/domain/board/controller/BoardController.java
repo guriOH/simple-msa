@@ -22,7 +22,7 @@ public class BoardController {
     @PostMapping("/register")
     public String register(@RequestBody BoardInsertDto boardInsertDto){
         boardService.register(boardInsertDto);
-        return "/board";
+        return "/common/layout";
     }
 
     @PostMapping("/update/{boardId}")
