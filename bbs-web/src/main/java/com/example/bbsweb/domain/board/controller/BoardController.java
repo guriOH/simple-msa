@@ -33,12 +33,12 @@ public class BoardController {
         return "/common/layout";
     }
 
-    @PostMapping("/update/{boardId}")
-    public String update(@PathVariable Long boardId,
-                         @RequestBody BoardUpdateDto boardUpdateDto){
-        boardService.update(boardId, boardUpdateDto);
-        return "/board";
-    }
+//    @PostMapping("/update/{boardId}")
+//    public String update(@PathVariable Long boardId,
+//                         @RequestBody BoardUpdateDto boardUpdateDto){
+//        boardService.update(boardId, boardUpdateDto);
+//        return "/board";
+//    }
 
     @GetMapping("/test")
     public String test(Model model) {
