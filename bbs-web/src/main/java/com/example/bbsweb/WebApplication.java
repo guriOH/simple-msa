@@ -3,7 +3,6 @@ package com.example.bbsweb;
 
 import com.example.bbscore.BbsCoreApplication;
 import org.springframework.boot.Banner;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 
