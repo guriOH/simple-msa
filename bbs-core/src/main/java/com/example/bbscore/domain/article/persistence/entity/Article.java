@@ -1,10 +1,9 @@
 package com.example.bbscore.domain.article.persistence.entity;
 
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
-import java.sql.Timestamp;
 import java.util.Date;
 
 @NoArgsConstructor

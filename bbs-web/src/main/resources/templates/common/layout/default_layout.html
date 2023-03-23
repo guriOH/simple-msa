@@ -5,11 +5,14 @@
 <head th:replace="common/fragments/common_head :: commonHead">
 </head>
 <body>
+
 <div class="container-fluid">
     <div class="row flex-nowrap">
         <th:block th:replace="common/fragments/sidebar :: sidebarFragment"></th:block>
         <div class="col py-3">
+            <th:block th:replace="common/fragments/common_header :: commonHeader"></th:block>
             <th:block layout:fragment="content"/>
+            <th:block th:replace="common/fragments/common_footer :: commonFooter"></th:block>
         </div>
     </div>
 </div>>

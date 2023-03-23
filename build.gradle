@@ -1,6 +1,6 @@
 buildscript {
     ext{
-        springBootVersion = '2.7.9'
+        springBootVersion = '3.0.4'
     }
 
     repositories {
@@ -23,8 +23,8 @@ subprojects {
 
     compileJava.options.encoding = 'UTF-8'
 
-    sourceCompatibility = 11
-    targetCompatibility = 11
+    sourceCompatibility = 17
+    targetCompatibility = 17
 
     project.version = '1.0.1.RELEASE'
 
@@ -89,6 +89,8 @@ project(":bbs-web") {
     dependencies {
         implementation project(':bbs-core')
         implementation('org.springframework.boot:spring-boot-starter-web')
+
+        implementation("org.springframework.boot:spring-boot-starter-security")
 
         implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
         implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'

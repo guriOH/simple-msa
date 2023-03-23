@@ -1,9 +1,9 @@
 package com.example.bbscore.base.entity;
 
+import jakarta.persistence.MappedSuperclass;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
-import javax.persistence.MappedSuperclass;
 import java.util.Date;
 
 @ToString

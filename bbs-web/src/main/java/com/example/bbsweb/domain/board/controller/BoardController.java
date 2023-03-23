@@ -4,6 +4,7 @@ package com.example.bbsweb.domain.board.controller;
 import com.example.bbscore.domain.board.dto.BoardInsertDto;
 import com.example.bbscore.domain.board.dto.BoardUpdateDto;
 import com.example.bbscore.domain.board.service.BoardService;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -11,7 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.tinylog.Logger;
 
-import javax.servlet.http.HttpServletRequest;
 
 @Slf4j
 @RequiredArgsConstructor

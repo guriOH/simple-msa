@@ -1,9 +1,7 @@
 package com.example.bbscore.base.dto;
 
 import lombok.*;
-import lombok.experimental.SuperBuilder;
 
-import javax.persistence.MappedSuperclass;
 import java.util.Date;
 
 @Getter
