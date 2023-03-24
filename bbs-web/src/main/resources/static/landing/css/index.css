@@ -1,0 +1,532 @@
+@charset "utf-8";
+
+/*@font-face {*/
+/*    font-family: 'Noto Sans KR';*/
+/*    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/Noto Sans KR.woff') format('woff');*/
+/*    font-weight: normal;*/
+/*    font-style: normal;*/
+/*}*/
+* {
+    font-family: 'Noto Sans KR', serif;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+html {
+    font-size: 10px;
+}
+ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+}
+a {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+}
+h3 {
+    font-size: 3rem;
+    line-height: 2;
+}
+header {
+    height: 175px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+header::after {
+    content: "";
+    width: 90%;
+    height: 1px;
+    background-color: #dedede;
+    position: absolute;
+    bottom: 0; left: 50%;
+    transform: translateX(-50%);
+}
+header h1 {
+    color: #8B00FF;
+    font-size: 5.5rem;
+}
+
+header img {
+    height: 5rem;
+    margin-right: 1.5rem;
+}
+
+header .user {
+    position: absolute;
+    right: 80px;
+    color: #262626;
+    font-weight: 400;
+    font-size: 2.1rem;
+}
+header .user li {
+    cursor: pointer;
+}
+header .user li:first-of-type {
+    padding: 8px 27px;
+    font-weight: bold;
+}
+header .user li:last-of-type {
+    padding: 8px 36px;
+    color: #fff;
+    background-color: #0e6fed;
+    border-radius: 20px;
+}
+
+section * {
+    opacity: 0;
+    transform: translateY(50%);
+    transition: .5s;
+    margin-top : 2rem;
+}
+section:last-of-type * {
+    transform: translateY(0);
+    transition: .8s;
+}
+main {
+    width: 90%;
+    max-width: 1320px;
+    margin: 0 auto;
+}
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    column-gap: 27px;
+    /*margin: 229px 0;*/
+    margin : 210px 0;
+}
+.gridItem {
+    height: 519px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.gridItem h2 {
+    font-size: 3rem;
+    margin: 4.2rem 0 3.4rem;
+}
+.gridItem p {
+    font-family: 'Noto Sans KR', serif;
+    font-size: 1.6rem;
+    color: #6c6c6c;
+    line-height: 1.56;
+    font-weight: normal;
+}
+
+.sec .grid {
+    margin-top: 40px;
+    color: #262626;
+}
+.sec .gridItem {
+    align-items: flex-start;
+    text-align: left;
+    padding: 3rem;
+    border-radius: 10px;
+    border: solid 1px #dddddd;
+}
+.sec .gridItem span {
+    font-size: 1.8rem;
+    border-bottom: 1px solid #262626;
+    line-height: 1.56;
+    font-family: 'Noto Sans KR', serif;
+}
+.sec .gridItem p + * {
+    align-self: flex-end;
+    margin-top: auto;
+}
+.gridItem:nth-of-type(2) {
+    transition-delay: .4s;
+}
+.gridItem:nth-of-type(3) {
+    transition-delay: .6s;
+}
+.gridItem:nth-of-type(4) {
+    transition-delay: .8s;
+}
+section:nth-of-type(3), table {
+    margin-bottom: 22.9rem;
+}
+.videoWrap {
+    width: 100%;
+}
+.videoContainer {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 비율인 경우 */
+    /* padding-bottom값은 4:3 비율인 경우 75%로 설정합니다 */
+    padding-top: 25px;
+    width: 100%;
+    height: 0;
+}
+.videoContainer iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+table {
+    width: 1320px;
+    font-size: 1.8rem;
+    border-collapse:collapse;
+    font-weight: bold;
+}
+table .wrap {
+    background-color: #fcfcfc;
+}
+table tr:first-of-type {
+    font-size: 2.2rem;
+    font-weight: normal;
+}
+table tr:first-of-type span {
+    display: block;
+    text-align: center;
+    border-radius: 23px;
+    padding: .6rem 0;
+    width: 11.5rem;
+    color: #fff;
+    text-indent: 0;
+}
+table tr:first-of-type ~ tr {
+    background-color: #fcfcfc;
+}
+table tr:nth-of-type(2) {
+    border-top: 1px solid #ddd;
+}
+.txt {
+    position: relative;
+}
+.txt::before {
+    content: "";
+    color: #a5a5a5;
+    font-size: 1.4rem;
+    font-weight: bold;
+    width: 12rem;
+    line-height: 1.56;
+    background: url(/landing/img/txt.svg) no-repeat;
+    background-size: cover;
+    position: absolute;
+    top: -330%; left: 50%;
+    padding: 1.4rem;
+    padding-bottom: 2.7rem;
+}
+td:first-of-type .txt::before {
+    content: "이제 막 구매대행을 시작하시는 초보 분들에게 추천!";
+}
+td:nth-of-type(3) .txt::before {
+    content: "꾸준한 상품 소싱을 통해 매출 증가를 준비하시는 베테랑분들에게 추천!";
+    width: 14rem;
+}
+th {
+    text-align: left;
+}
+td, tr:first-of-type ~ tr th {
+    text-indent: 1rem;
+    color: #6c6c6c;
+}
+th,td {
+    width: 25%;
+}
+tr {
+    border-collapse: collapse;
+}
+tr:first-of-type ~ tr th,
+tr:first-of-type ~ tr td {
+    padding: 2.5rem 0;
+}
+.br {
+    background-color: #b28374;
+}
+.sl {
+    background-color: #bebebe;
+}
+.go {
+    background-color: #c9b280;
+}
+.pink td {
+    color: #ff509a;
+}
+.blue td {
+    color: #7d6cff;
+}
+footer {
+    background-color: #f2f2f2;
+    color: #6c6c6c;
+}
+footer .wrap{
+    width: 1320px;
+    margin: 0 auto;
+    padding: 7.3rem 0;
+    font-size: 1.6rem;
+    display: flex;
+}
+.name {
+    width: 60%;
+}
+address {
+    width: 40%;
+    font-style: unset;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+address * {
+    display: block;
+    line-height: 1.56;
+}
+footer .copy {
+    width: 100%;
+    height: auto;
+    color: #888;
+    margin-top: 3rem;
+}
+.active * {
+    opacity: 1;
+    transform: translateY(0);
+}
+.lnb {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 3.8rem;
+    height: 14.4rem;
+    position: fixed;
+    top: 41%; left: 1.5%;
+    border-radius: 2rem;
+    padding: 2rem 0;
+    z-index: 9999;
+}
+.lnb li {
+    width: 10px;
+    height: 10px;
+    background-color: #dedede;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.lnb .focus {
+    background-color: #7d6cff;
+}
+.popUp {
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.6rem;
+}
+.popUp * {
+    font-family: 'Noto Sans KR';
+}
+.popUp > div {
+    position: absolute;
+    width: 750px;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    background-color: #fff;
+    border: 1px solid #7d6cff;
+    border-radius: 20px;
+    overflow-y: scroll;
+}
+.regist {
+    height: 80vh;
+}
+.popUp > div {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+.popUp > div::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+}
+
+.popUp input {
+    width: 70%;
+    text-indent: 8px;
+    padding: .5rem 0;
+    border: 1px solid #000;
+    outline: unset;
+}
+.popUp input[type="checkbox"] {
+    width: auto;
+    border: 1px solid #000;
+    background-color: #fff;
+    margin-right: 3rem;
+}
+.popUp button {
+    width: 25%;
+    outline: unset;
+    border: 1px solid #000;
+    background-color: transparent;
+    cursor: pointer;
+    padding: .4rem .5rem;
+}
+.popUp form > button:last-of-type {
+    width: 50%;
+    margin: 3rem auto;
+    padding: .5rem 5rem;
+    display: block;
+    border-radius: 20px;
+}
+.popUp .wrap {
+    width: 60%;
+    margin: 0 auto;
+}
+.popUp .btn {
+    display: inline-block;
+    margin-right: auto;
+}
+.popUp .wt {
+    width: 70%;
+}
+.popUp .wrap > p {
+    display: inline-block;
+    width: 25%;
+}
+.popUp .close {
+    position: absolute;
+    top: 2%;
+    right: 2%;
+    font-size: 2.5rem;
+    cursor: pointer;
+}
+.popUp h4 {
+    text-align: center;
+    margin: 2.3rem 0;
+    font-size: 2rem;
+}
+.popUp .flex {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 2rem 0 3rem;
+}
+.popUp .flex span {
+    margin-right: 1.6rem;
+}
+.popUp .login {
+    display: none;
+    transform: translate(-50%,70%);
+}
+.regist {
+    display: none;
+}
+.txtBox {
+    width: 100%;
+    height: 300px;
+    overflow-y: scroll;
+    border: 1px solid #888;
+    padding: 0 2rem;
+}
+.txtBox:first-of-type {
+    margin-top: 3rem;
+}
+.txtBox p{
+    line-height: 1.6;
+}
+
+
+
+@media screen and (max-width: 500px) {
+    html {
+        font-size: 5px;
+    }
+    header {
+        height: 56px;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+    }
+
+    header img {
+        width: 5%;
+    }
+
+    header h1 {
+        font-size: 14px;
+    }
+
+    header .user {
+        position: unset;
+    }
+    header .user li {
+        display: flex;
+        align-items: center;
+        font-size: 12px;
+    }
+    header .user li:first-of-type a {
+        padding: 3px 12px;
+    }
+    header .user li:last-of-type a {
+        padding: 3px 15px;
+    }
+
+    .grid {
+        grid-template-columns: repeat(2,1fr);
+        margin: 59px 0;
+    }
+    .gridItem {
+        height: 300px;
+    }
+    .gridItem p {
+        line-height: 1.6;
+    }
+    img {
+        display: block;
+        width: 40%;
+    }
+    .sec .grid {
+        grid-gap: 7px;
+    }
+    .sec img {
+        width: 25%;
+    }
+    .sec .grid .gridItem:nth-of-type(2) p {
+        content: "국내의 주요 마켓을 포함하여 역직구를 위한 해외 플랫폼 상품 등록까지! 마켓은 계속 추가될 예정입니다. 또한 국가별 주요 소싱사이트는 물론, 신규 해외 쇼핑 관련 사이트의 제품을 소싱하실 수 있도록 사이트 추가될 예정입니다.";
+    }
+    table {
+        width: 100%;
+        margin-bottom: 50px;
+    }
+    .txt::before {
+        top: -400%; left: -150%;
+        background: url(/landing/img/txt.png) no-repeat;
+        background-size: cover;
+        width: 20rem;
+        padding-bottom: 3rem;
+    }
+    td:nth-of-type(3) .txt::before {
+        width: 20rem;
+    }
+    table:nth-of-type(2) tr:first-of-type th {
+        position: relative;
+        height: 62px;
+    }
+    table:nth-of-type(2) tr:first-of-type th h3 {
+        position:absolute;
+        width: 120%;
+        top: 0;
+    }
+    footer .wrap{
+        width: 85%;
+        flex-direction: column;
+    }
+    footer .wrap > * {
+        width: 100%;
+    }
+    .name {
+        margin-bottom: 20px;
+    }
+    .lnb {
+        display: none;
+    }
+    .popUp > div {
+        width: 95vw;
+    }
+    .popUp .wrap {
+        width: 90%;
+    }
+}

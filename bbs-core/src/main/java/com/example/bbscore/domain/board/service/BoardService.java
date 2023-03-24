@@ -21,6 +21,12 @@ public class BoardService {
 
     private final BoardRepository boardRepository;
 
+
+    public List<Board> getBoards(){
+        return boardRepository.findAll();
+    }
+
+
     public void register(BoardInsertDto boardInsertDto) {
         Board board = Board.builder()
                 .name(boardInsertDto.getName())
@@ -36,8 +42,8 @@ public class BoardService {
     }
 
     @Transactional
-    public void update(Long boardId, BoardUpdateDto boardUpdateDto) {
-        Board board = boardRepository.findById(boardId).orElseThrow(() -> new BbsException("NOT_FOUND_RESOURCE"));
+    public void update(BoardUpdateDto boardUpdateDto) {
+        Board board = boardRepository.findById(boardUpdateDto.getBoardId()).orElseThrow(() -> new BbsException("NOT_FOUND_RESOURCE"));
 
         board.setAllowedAttach(boardUpdateDto.getIsAllowedAttach());
         board.setAllowedComment(boardUpdateDto.getIsAllowedComment());

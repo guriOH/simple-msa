@@ -1,0 +1,152 @@
+/*모달 영역*/
+.modal {
+    font-size: 1.6rem;
+}
+
+.modal .form-control { /*modal 인풋박스*/
+    font-size: 100%;
+    height: 5rem;
+}
+
+.modal .btn { /*modal 버튼*/
+    font-size: 100%;
+    height : 5rem;
+}
+
+.privacy-title { /*개인정보 처리방침 제목 */
+    font-size: medium;
+}
+
+.modal-platform-title { /*모달 타이틀 */
+    color: #8B00FF;
+}
+/*모달 영역 끝*/
+
+/*플로팅 배너 영역*/
+.floating-menu {
+    background-color: transparent;
+    position: absolute;
+    top : 10%;
+    left: 86%;
+}
+
+.floating-menu * {
+    font-size: 2.0rem;
+}
+.floating-menu .list-group {
+    background-color: transparent;
+}
+
+.floating-menu .list-group .list-group-item {
+    background-color: transparent;
+}
+/*플로팅 배너 영역 끝*/
+
+/*버튼 영역*/
+.btn {
+    padding: 10px;
+}
+
+.btn-blue {
+    background-color: #0e6fed;
+    color: white;
+}
+
+.btn-blue:hover {
+    color: white;
+    background-color: #1c4783;
+}
+/*버튼 영역 끝*/
+
+/*스크롤 버튼 시작*/
+.btn-scroll {
+    position: fixed; bottom: 20px; left: 50%;
+    transform: translatex(-50%);
+    z-index: 2;
+    display: inline-block;
+    color: #000000;
+    transition: opacity .3s;
+}
+.icon-scroll {background:radial-gradient(ellipse farthest-corner at center top, #FBB03B, #D4145A);}
+
+.icon-scroll button {
+    padding-top: 60px;
+    border: 0;
+    outline: 0;
+    background: transparent;
+}
+.icon-scroll button span {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    width: 30px;
+    height: 50px;
+    margin-left: -15px;
+    border: 2px solid #000000;
+    border-radius: 50px;
+    box-sizing: border-box;
+}
+.icon-scroll button span::before {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    content: '';
+    width: 6px;
+    height: 6px;
+    margin-left: -3px;
+    background-color: #000000;
+    border-radius: 100%;
+    animation: scroll-animation 2s infinite;
+    box-sizing: border-box;
+}
+/*https://codepen.io/bibibig/pen/WmgMqW*/
+@keyframes scroll-animation {
+    0% {transform: translate(0, 0); opacity: 0;}
+    40% {opacity: 1;}
+    80% {transform: translate(0, 20px); opacity: 0;}
+    100% {opacity: 0;}
+}
+/*스크롤 버튼 끝*/
+/*팝업 튜토리얼용*/
+.popover {
+    z-index: 1049;
+    font-size: 14px;
+}
+
+
+/*SweetAlert 시작*/
+.swal2-popup {
+    font-size: 14px !important;
+}
+/* 끝 */
+
+@media screen and (max-width: 500px) {
+    .floating-menu {
+        z-index: 9999;
+        left: 68%;
+        top : 500px;
+    }
+
+    /*모달 영역*/
+    .modal-content {
+        margin-left: 2rem;
+        margin-right: 2rem;
+    }
+
+    .modal-platform-title {
+        font-size: 18px;
+    }
+
+    .modal-mark {
+        display: inline;
+        width: 9%;
+        margin-bottom: 5px;
+    }
+
+    .modal-btn {
+        padding: 5px;
+    }
+
+    /*모달 영역 끝*/
+
+}

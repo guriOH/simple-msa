@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
->
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{common/layout/default_layout}">
 
-<body>
- Welcome tothymeleaf
-</body>
+<th:block layout:fragment="content">
+
+    Welcome tothymeleaf
+</th:block>
 </html>

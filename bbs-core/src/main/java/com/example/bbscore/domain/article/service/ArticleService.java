@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
+import java.util.List;
 
 @Slf4j
 @Service
@@ -19,6 +20,12 @@ import java.util.Date;
 public class ArticleService {
 
     private final ArticleRepository articleRepository;
+
+
+
+    public List<Article> getArticles(Long boardId){
+        return articleRepository.findAllByBoardId(boardId);
+    }
 
     public void register(Long boardId, ArticleInsertDto articleInsertDto) {
 
@@ -57,6 +64,14 @@ public class ArticleService {
         article.setArticleContents(articleUpdateDto.getArticleContents());
         article.setArticleCategory(articleUpdateDto.getArticleCategory());
         article.setIsPublic(articleUpdateDto.getIsPublic());
+    }
+
+
+    @Transactional
+    public void hide(Long articleId){
+        Article article = articleRepository.findById(articleId).orElseThrow(() -> new BbsException("Could not find article"));
+
+        article.setIsPublic(false);
     }
 
 }
