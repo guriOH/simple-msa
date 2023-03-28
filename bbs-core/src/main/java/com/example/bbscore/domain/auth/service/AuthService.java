@@ -1,6 +1,7 @@
 package com.example.bbscore.domain.auth.service;
 
 
+import com.example.bbscore.domain.auth.dto.LoginRequestDto;
 import com.example.bbscore.domain.auth.dto.SignUpRequestDto;
 import com.example.bbscore.domain.auth.persistence.entity.User;
 import com.example.bbscore.domain.auth.persistence.repository.UserRepository;
@@ -8,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Slf4j
 @Service
@@ -29,5 +32,15 @@ public class AuthService {
 
         userRepository.save(user);
         return signUpRequestDto.getEmail();
+    }
+
+    public boolean login(LoginRequestDto loginRequestDto) {
+        Optional<User> user = userRepository.findByEmailAddress(loginRequestDto.getEmail());
+
+        if(user.isPresent()) {
+            return passwordEncoder.matches(loginRequestDto.getPassword(), user.get().getPassword());
+        }else{
+            return false;
+        }
     }
 }

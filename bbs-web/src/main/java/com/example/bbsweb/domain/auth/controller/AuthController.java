@@ -1,6 +1,7 @@
 package com.example.bbsweb.domain.auth.controller;
 
 
+import com.example.bbscore.domain.auth.dto.LoginRequestDto;
 import com.example.bbscore.domain.auth.dto.SignUpRequestDto;
 import com.example.bbscore.domain.auth.service.AuthService;
 import lombok.RequiredArgsConstructor;
@@ -22,5 +23,11 @@ public class AuthController {
     @PostMapping("/signup")
     public String signup(@RequestBody SignUpRequestDto signUpRequestDto){
         return authService.signUp(signUpRequestDto);
+    }
+
+
+    @PostMapping("/login")
+    public boolean login(@RequestBody LoginRequestDto loginRequestDto){
+        return authService.login(loginRequestDto);
     }
 }

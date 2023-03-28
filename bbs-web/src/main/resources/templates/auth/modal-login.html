@@ -9,15 +9,60 @@
                     <h5 class="modal-title">로그인</h5>
                 </div>
                 <div class="modal-body p-4 text-center">
-                    <h5 class="mb-0">Enable this setting?</h5>
-                    <p class="mb-0">You can always change your mind in your account settings.</p>
+                    <form id="loginForm" th:action="@{/auth/login}" method="POST">
+                        <div class="form-floating">
+                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                            <label for="floatingInput">Email address</label>
+                        </div>
+                        <div class="form-floating">
+                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                            <label for="floatingPassword">Password</label>
+                        </div>
+
+                        <div class="checkbox mb-3">
+                            <label>
+                                <input type="checkbox" value="remember-me"> Remember me
+                            </label>
+                        </div>
+                        <button onclick="login()" class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+                        <p class="mt-5 mb-3 text-muted">© 2017–2022</p>
+                    </form>
                 </div>
                 <div class="modal-footer flex-nowrap p-0">
-                    <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0 border-right"><strong>확인</strong></button>
-                    <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0" data-bs-dismiss="modal">취소</button>
+<!--                    <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0 border-right"><strong>확인</strong></button>-->
+                    <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0" data-dismiss="modal">취소</button>
                 </div>
             </div>
         </div>
     </div>
+
+    <script>
+        document.getElementById('floatingInput').addEventListener('keypress', e => {
+            if(e.key === 'Enter') {
+                login();
+            }
+        });
+
+        document.getElementById('floatingPassword').addEventListener('keypress', e => {
+            if(e.key === 'Enter') {
+                login();
+            }
+        });
+
+        function login() {
+            var loginForm = document.getElementById('loginForm');
+            if(!validForm(loginForm)) {
+                console.log("ascnc")
+                return false;
+            }else{
+                console.log('asdasd')
+            }
+
+
+
+            // GLOBAL_GA_EVENTS.login();
+            // loginForm.submit();
+        }
+    </script>
 </th:block>
 </html>
