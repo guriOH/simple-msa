@@ -9,7 +9,7 @@
                     <h5 class="modal-title">로그인</h5>
                 </div>
                 <div class="modal-body p-4 text-center">
-                    <form id="loginForm" th:action="@{/auth/login}" method="POST">
+                    <form id="loginForm" action="/auth/login"  method="POST">
                         <div class="form-floating">
                             <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
                             <label for="floatingInput">Email address</label>
