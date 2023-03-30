@@ -11,6 +11,7 @@ function fileUpload(url, formData) {
 }
 
 function postCall(url, body) {
+    console.log("asdasda")
     return $.ajax({
         type : 'POST',
         url: url,

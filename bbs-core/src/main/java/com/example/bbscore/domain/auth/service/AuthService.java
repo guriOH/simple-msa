@@ -10,6 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.Optional;
 
 @Slf4j
@@ -29,7 +30,10 @@ public class AuthService {
         User user = new User();
         user.setEmailAddress(signUpRequestDto.getEmail());
         user.setPassword(passwordEncoder.encode(signUpRequestDto.getPassword()));
-        //ToDo : add column values...
+        user.setJoinDatetime(new Date());
+        user.setLoginFailCount(0L);
+        user.setLastUpdatedDatetime(new Date());
+
 
         userRepository.save(user);
         return signUpRequestDto.getEmail();

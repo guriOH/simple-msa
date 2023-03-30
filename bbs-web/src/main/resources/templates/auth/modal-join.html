@@ -9,7 +9,7 @@
                     <h5 class="modal-title">회원가입</h5>
                 </div>
                 <div class="modal-body p-4 text-center">
-                    <form id="joinForm" th:action="@{/auth/signup}"  method="POST">
+                    <form id="joinForm" action="#" name="joinForm">
                         <div class="form-floating">
                             <input type="name"  class="form-control" id="name" name="name" placeholder="name">
                             <label for="name">Name</label>
@@ -36,30 +36,40 @@
         </div>
     </div>
     <script>
-        // document.getElementById('floatingInput').addEventListener('keypress', e => {
-        //     if(e.key === 'Enter') {
-        //         login();
-        //     }
-        // });
-        //
-        // document.getElementById('floatingPassword').addEventListener('keypress', e => {
-        //     if(e.key === 'Enter') {
-        //         login();
-        //     }
-        // });
 
-        function signUp() {
+        /**
+         * 회원가입
+         * */
+
+        const signUp = () => {
             var joinForm = document.getElementById('joinForm');
-            console.log(JSON.stringify(joinForm));
-            if(!validForm(joinForm)) {
-                console.log("ascnc")
-                return false;
-            }else{
-                console.log('asdasd')
+
+            // console.log(JSON.stringify(joinForm));
+            // if(!validForm(joinForm)) {
+            //     console.log("ascnc")
+            //     return false;
+            // }else{
+            //     console.log('asdasd')
+            // }
+            let body = {
+                email: $("#email").val(),
+                password: $("#password").val(),
+                mobileNum: $("#mobileNum").val(),
+                name: $("#name").val()
             }
-            // GLOBAL_GA_EVENTS.login();
+            console.log(JSON.stringify(body));
+            postCall('/auth/signup', body)
+                .done( () => {
+                    alert("Success!")
+                })
+                .then(() =>{
+                    alert("Error")
+                })
+
+
             joinForm.submit();
         }
+
     </script>
 </th:block>
 </html>

@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
+import java.util.Date;
 
 @NoArgsConstructor
 @Data
@@ -13,6 +14,7 @@ import java.sql.Timestamp;
 public class User {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_number", nullable = false)
     private long userNumber;
 
@@ -24,15 +26,12 @@ public class User {
     private String emailAddress;
     @Basic
     @Column(name = "join_datetime", nullable = false)
-    private Timestamp joinDatetime;
+    private Date joinDatetime;
     @Basic
     @Column(name = "login_fail_count", nullable = false)
     private long loginFailCount;
     @Basic
-    @Column(name = "last_updated_user_number", nullable = false)
-    private long lastUpdatedUserNumber;
-    @Basic
     @Column(name = "last_updated_datetime", nullable = false)
-    private Timestamp lastUpdatedDatetime;
+    private Date lastUpdatedDatetime;
 
 }
