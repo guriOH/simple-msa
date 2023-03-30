@@ -29,6 +29,7 @@ public class AuthService {
         User user = new User();
         user.setEmailAddress(signUpRequestDto.getEmail());
         user.setPassword(passwordEncoder.encode(signUpRequestDto.getPassword()));
+        //ToDo : add column values...
 
         userRepository.save(user);
         return signUpRequestDto.getEmail();
