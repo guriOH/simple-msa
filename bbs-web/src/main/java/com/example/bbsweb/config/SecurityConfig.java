@@ -1,6 +1,11 @@
 package com.example.bbsweb.config;
 
 
+import com.example.bbsweb.config.filter.CustomAuthenticationManager;
+import com.example.bbsweb.config.filter.CustomAuthenticationProcessingFilter;
+import com.example.bbsweb.config.filter.UserDetailServiceImpl;
+import com.example.bbsweb.config.handler.CustomAuthenticationFailureHandler;
+import com.example.bbsweb.config.handler.CustomAuthenticationSuccessHandler;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -11,16 +16,23 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import java.io.IOException;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
+    private static final String[] PERMIT_API = {
+            "/",
+            "/auth/**"
+    };
 
     @Bean
     public BCryptPasswordEncoder encodePassword() {  // 회원가입 시 비밀번호 암호화에 사용할 Encoder 빈 등록
@@ -29,10 +41,6 @@ public class SecurityConfig {
 
 
 
-    private static final String[] PERMIT_API = {
-            "/",
-            "/auth/**"
-    };
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf().disable()
@@ -43,31 +51,27 @@ public class SecurityConfig {
                 .anyRequest().authenticated()
                 .and()
                     .formLogin()
-                    .loginPage("/loginPage")
-                    .defaultSuccessUrl("/")
-                    .failureUrl("/login")
-                    .successHandler(new AuthenticationSuccessHandler() {
-                        @Override
-                        public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
-                            System.out.println("authentication : " + authentication.getName());
-                            response.sendRedirect("/");
-                        }
-                    })
-                    .failureHandler(new AuthenticationFailureHandler() {
-                        @Override
-                        public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
-                            System.out.println("exception : " + exception.getMessage());
-                            response.sendRedirect("/login");
-                        }
-                    })
-                    .permitAll()
                 .and()
-                    .logout()
-                    .permitAll();
+                    .addFilterBefore(customAuthenticationProcessingFilter(), UsernamePasswordAuthenticationFilter.class);
         return http.build();
 
     }
 
+    // 커스텀 인증 필터
+    @Bean
+    public CustomAuthenticationProcessingFilter customAuthenticationProcessingFilter() {
+        CustomAuthenticationProcessingFilter filter = new CustomAuthenticationProcessingFilter("/auth/login");
+        filter.setAuthenticationManager(customAuthenticationManager());
+        filter.setAuthenticationFailureHandler(new CustomAuthenticationFailureHandler("/login"));
+        filter.setAuthenticationSuccessHandler(new CustomAuthenticationSuccessHandler("/"));
+        return filter;
+    }
+
+    // 커스텀 인증 매니저
+    @Bean
+    public CustomAuthenticationManager customAuthenticationManager() {
+        return new CustomAuthenticationManager();
+    }
 
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {

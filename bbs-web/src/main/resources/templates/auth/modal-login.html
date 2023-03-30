@@ -9,14 +9,14 @@
                     <h5 class="modal-title">로그인</h5>
                 </div>
                 <div class="modal-body p-4 text-center">
-                    <form id="loginForm" action="/auth/login"  method="POST">
+                    <form id="loginForm" th:action="@{/auth/login}"  method="POST">
                         <div class="form-floating">
-                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                            <label for="floatingInput">Email address</label>
+                            <input type="email"  class="form-control" id="email" name="email" placeholder="name@example.com">
+                            <label for="email">Email address</label>
                         </div>
                         <div class="form-floating">
-                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                            <label for="floatingPassword">Password</label>
+                            <input type="password"  class="form-control" id="password" name="password" placeholder="Password">
+                            <label for="password">Password</label>
                         </div>
 
                         <div class="checkbox mb-3">
@@ -24,7 +24,7 @@
                                 <input type="checkbox" value="remember-me"> Remember me
                             </label>
                         </div>
-                        <button onclick="login()" class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+                        <button onclick="login()" class="w-100 btn btn-lg btn-primary" type="button">Sign in</button>
                         <p class="mt-5 mb-3 text-muted">© 2017–2022</p>
                     </form>
                 </div>
@@ -51,17 +51,15 @@
 
         function login() {
             var loginForm = document.getElementById('loginForm');
+            console.log(JSON.stringify(loginForm));
             if(!validForm(loginForm)) {
                 console.log("ascnc")
                 return false;
             }else{
                 console.log('asdasd')
             }
-
-
-
             // GLOBAL_GA_EVENTS.login();
-            // loginForm.submit();
+            loginForm.submit();
         }
     </script>
 </th:block>

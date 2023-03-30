@@ -43,4 +43,15 @@ public class AuthService {
             return false;
         }
     }
+
+
+    public User findUserByEmailAddress(String emailAddress){
+        Optional<User> user = userRepository.findByEmailAddress(emailAddress);
+
+        if(user.isPresent()) {
+            return user.get();
+        }else{
+            return null;
+        }
+    }
 }
