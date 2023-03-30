@@ -9,15 +9,57 @@
                     <h5 class="modal-title">회원가입</h5>
                 </div>
                 <div class="modal-body p-4 text-center">
-                    <h5 class="mb-0">Enable this setting?</h5>
-                    <p class="mb-0">You can always change your mind in your account settings.</p>
-                </div>
-                <div class="modal-footer flex-nowrap p-0">
-                    <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0 border-right"><strong>가입요청</strong></button>
-                    <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0" data-bs-dismiss="modal">취소</button>
+                    <form id="joinForm" th:action="@{/auth/signup}"  method="POST">
+                        <div class="form-floating">
+                            <input type="name"  class="form-control" id="name" name="name" placeholder="name">
+                            <label for="name">Name</label>
+                        </div>
+                        <div class="form-floating">
+                            <input type="mobileNum"  class="form-control" id="mobileNum" name="mobileNum" placeholder="mobileNum">
+                            <label for="mobileNum">Mobile address</label>
+                        </div>
+                        <div class="form-floating">
+                            <input type="email"  class="form-control" id="email" name="email" placeholder="name@example.com">
+                            <label for="email">Email address</label>
+                        </div>
+                        <div class="form-floating">
+                            <input type="password"  class="form-control" id="password" name="password" placeholder="Password">
+                            <label for="password">Password</label>
+                        </div>
+                        <button onclick="signUp()" class="w-100 btn btn-lg btn-primary" type="button">join</button>
+                        <div class="modal-footer flex-nowrap p-0">
+                            <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0" data-bs-dismiss="modal">취소</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        // document.getElementById('floatingInput').addEventListener('keypress', e => {
+        //     if(e.key === 'Enter') {
+        //         login();
+        //     }
+        // });
+        //
+        // document.getElementById('floatingPassword').addEventListener('keypress', e => {
+        //     if(e.key === 'Enter') {
+        //         login();
+        //     }
+        // });
+
+        function signUp() {
+            var joinForm = document.getElementById('joinForm');
+            console.log(JSON.stringify(joinForm));
+            if(!validForm(joinForm)) {
+                console.log("ascnc")
+                return false;
+            }else{
+                console.log('asdasd')
+            }
+            // GLOBAL_GA_EVENTS.login();
+            joinForm.submit();
+        }
+    </script>
 </th:block>
 </html>

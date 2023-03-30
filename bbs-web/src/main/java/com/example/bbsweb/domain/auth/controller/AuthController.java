@@ -21,8 +21,8 @@ public class AuthController {
 
     private final AuthService authService;
 
-    @PostMapping("/signup")
-    public String signup(@RequestBody SignUpRequestDto signUpRequestDto){
+    @PostMapping(value = "/signup", consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE})
+    public String signup(SignUpRequestDto signUpRequestDto){
         return authService.signUp(signUpRequestDto);
     }
 

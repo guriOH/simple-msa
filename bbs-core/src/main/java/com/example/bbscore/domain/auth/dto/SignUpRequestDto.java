@@ -10,6 +10,8 @@ import lombok.ToString;
 @ToString
 public class SignUpRequestDto {
 
+    private String name;
+    private String mobileNum;
     private String email;
     private String password;
 }
