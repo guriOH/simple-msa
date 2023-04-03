@@ -23,14 +23,15 @@ public class BoardController {
 
 
     @GetMapping
-    public String getList(HttpServletRequest request){
+    public String getList(Model model){
+        model.addAttribute("bbs_list", boardService.getBoards());
         return "/contents/bbs";
     }
 
     @PostMapping("/register")
     public String register(@RequestBody BoardInsertDto boardInsertDto){
         boardService.register(boardInsertDto);
-        return "/common/layout";
+        return "redirect:/contents/bbs";
     }
 
 //    @PostMapping("/update/{boardId}")

@@ -31,7 +31,8 @@ import java.io.IOException;
 public class SecurityConfig {
     private static final String[] PERMIT_API = {
             "/",
-            "/auth/**"
+            "/auth/**",
+            "/bbs/**"
     };
 
     @Bean

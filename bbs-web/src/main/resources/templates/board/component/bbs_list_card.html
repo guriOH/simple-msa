@@ -108,5 +108,39 @@
             </div>
         </div>
     </div>
+    <script th:inline="javascript">
+
+        // function getMemberList() {
+        //     $.ajax({
+        //         type: "GET",
+        //         url: "/bbs",
+        //         // data: form, // api 호출을 위한 요청 변수가 필요하다면 사용해주세요.
+        //         dataType: "text"
+        //     })
+        //         .done(function (result) {
+        //             console.log(result);
+        //             // $("#memberListContent").replaceWith(result);
+        //         })
+        //         .fail(function(jqXHR) {
+        //             console.log(jqXHR);
+        //         })
+        //         .always(function() {
+        //             console.log("요청, 응답 결과에 상관없이, 이건 항상 실행됩니다.");
+        //         })
+        // }
+        //
+        $(function (){
+            $('#bbs_crt_btn').click(() => {
+                getCall('/bbs')
+                    .then( (res) => {
+                        console.log("getCall test")
+                    })
+            })
+        })
+        //
+        // $('#bbs_crt_btn').click(() => {
+        //     console.log("clicked!!")
+        // })
+    </script>
 </th:block>
 </html>
