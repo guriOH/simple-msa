@@ -21,15 +21,14 @@ public class BoardService {
 
     private final BoardRepository boardRepository;
 
-
     public List<Board> getBoards(){
         return boardRepository.findAll();
     }
 
-
     public void register(BoardInsertDto boardInsertDto) {
         Board board = Board.builder()
-                .name(boardInsertDto.getName())
+                .name(boardInsertDto.getBbsName())
+                .description(boardInsertDto.getDescription())
                 .isAllowedComment(boardInsertDto.getIsAllowedComment())
                 .isAllowedAttach(boardInsertDto.getIsAllowedAttach())
                 .registeredDatetime(new Date())

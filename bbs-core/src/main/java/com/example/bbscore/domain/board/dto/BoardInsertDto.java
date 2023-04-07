@@ -9,7 +9,8 @@ import lombok.*;
 @ToString
 public class BoardInsertDto extends BaseInsertDto {
 
-    public String name;
+    public String bbsName;
+    public String description;
     public Boolean isAllowedComment;
     public Boolean isAllowedAttach;
 }

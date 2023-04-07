@@ -11,16 +11,20 @@
                 <div class="modal-body p-4 text-center">
                     <form id="bbsRegistForm" action="#" name="bbsRegistForm">
                         <div class="form-floating">
-                            <input type="name"  class="form-control" id="name" name="name" placeholder="name">
-                            <label for="name">Name</label>
+                            <input type="name"  class="form-control" id="bbsName" name="name" placeholder="name">
+                            <label for="bbsName">Name</label>
+                        </div>
+                        <div class="form-floating">
+                            <input type="text"  class="form-control" id="description" name="description" placeholder="description">
+                            <label for="description">Description</label>
                         </div>
                         <div class="form-floating">
                             <div>
-                                <input type="checkbox" id="isAllowedComment" name="isAllowedComment">
+                                <input type="checkbox"  id="isAllowedComment" name="isAllowedComment">
                                 <label for="isAllowedComment">댓글허용여부</label>
                             </div>
                             <div>
-                                <input type="checkbox"  id="isAllowedAttach" name="isAllowedAttach">
+                                <input type="checkbox"   id="isAllowedAttach" name="isAllowedAttach">
                                 <label for="isAllowedAttach">파일첨부허용여부</label>
                             </div>
                         </div>
@@ -34,24 +38,38 @@
         </div>
     </div>
     <script>
-        var body = {
-            name : 'Test',
-            isAllowedComment : true,
-            isAllowedAttach : true
+        const regist = () => {
+            const body = initBbsInfo()
+
+            postCall('/bbs/register',body)
+            .done(function (result) {
+                location.href = `/bbs`;
+            })
+            .fail(function(jqXHR) {
+                console.log(jqXHR);
+            })
+            .always(function() {
+                console.log("요청, 응답 결과에 상관없이, 이건 항상 실행됩니다.");
+            })
+
         }
 
-        function regist(){
-            // postCall('/bbs/register',body)
-            // .done(function (result) {
-            //     location.href = `/bbs`;
-            // })
-            // .fail(function(jqXHR) {
-            //     console.log(jqXHR);
-            // })
-            // .always(function() {
-            //     console.log("요청, 응답 결과에 상관없이, 이건 항상 실행됩니다.");
-            // })
+        function initBbsInfo()
+        {
+            let bbsName = $('#bbsName').val();
+            let description = $('#description').val();
+            let isAllowedComment = document.getElementById('isAllowedComment').checked;
+            let isAllowedAttach = document.getElementById('isAllowedAttach').checked;
+
+            return {
+                'bbsName' : bbsName,
+                'description' : description,
+                'isAllowedComment' : isAllowedComment,
+                'isAllowedAttach' : isAllowedAttach,
+            };
         }
+
+
     </script>
 </th:block>
 </html>
