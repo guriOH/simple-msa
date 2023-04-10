@@ -27,7 +27,7 @@
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
                                         <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Delete</button>
+                                        <button id="bbs_del_btn" th:onclick="|deleteBbs(${item.id})|" type="button" class="btn btn-sm btn-outline-secondary">Delete</button>
                                     </div>
 <!--                                    <small class="text-muted">9 mins</small>-->
                                 </div>
@@ -40,6 +40,22 @@
     </div>
     <th:block th:replace="/board/modal/modal-bbs-register :: modal-bbs-register"/>
     <script>
+        function deleteBbs(id) {
+            url = "/bbs/"+id;
+
+            deleteCall(url)
+                .done(function (result) {
+                    location.href = `/bbs`;
+                })
+                .fail(function(jqXHR) {
+                    console.log(jqXHR);
+                })
+                .always(function() {
+                    console.log("요청, 응답 결과에 상관없이, 이건 항상 실행됩니다.");
+                })
+        }
+
+
         $(function (){
             $('#bbs_crt_btn').click(() => {
                 $('#modalBbsRegister').modal('show');

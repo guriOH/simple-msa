@@ -22,7 +22,7 @@ public class BoardService {
     private final BoardRepository boardRepository;
 
     public List<Board> getBoards(){
-        return boardRepository.findAll();
+        return boardRepository.findAllByIsDeleted(false);
     }
 
     public void register(BoardInsertDto boardInsertDto) {
@@ -31,6 +31,7 @@ public class BoardService {
                 .description(boardInsertDto.getDescription())
                 .isAllowedComment(boardInsertDto.getIsAllowedComment())
                 .isAllowedAttach(boardInsertDto.getIsAllowedAttach())
+                .isDeleted(false)
                 .registeredDatetime(new Date())
                 .registeredUserNumber(1L)
                 .lastUpdatedDatetime(new Date())
@@ -48,5 +49,12 @@ public class BoardService {
         board.setAllowedComment(boardUpdateDto.getIsAllowedComment());
         board.setLastUpdatedDatetime(new Date());
         board.setLastUpdatedUserNumber(1L);
+    }
+
+    @Transactional
+    public void delete(long boardId) {
+        Board board = boardRepository.findById(boardId).orElseThrow(() -> new BbsException("NOT_FOUND_RESOURCE"));
+
+        board.setDeleted(true);
     }
 }

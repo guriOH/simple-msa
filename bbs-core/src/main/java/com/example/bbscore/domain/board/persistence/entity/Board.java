@@ -30,6 +30,8 @@ public class Board extends BaseEntity {
 
     private String description;
 
+    private boolean isDeleted;
+
     private boolean isAllowedComment;
 
     private boolean isAllowedAttach;

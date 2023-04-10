@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.tinylog.Logger;
 
 
+
 @Slf4j
 @RequiredArgsConstructor
 @Controller
@@ -32,6 +33,12 @@ public class BoardController {
     public String register(@RequestBody BoardInsertDto boardInsertDto){
         boardService.register(boardInsertDto);
         return "redirect:/contents/bbs";
+    }
+
+    @DeleteMapping("/{boardId}")
+    public String delete(@PathVariable long boardId){
+        boardService.delete(boardId);
+        return "/contents/bbs";
     }
 
 //    @PostMapping("/update/{boardId}")
