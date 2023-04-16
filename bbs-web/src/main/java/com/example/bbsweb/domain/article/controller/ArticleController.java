@@ -33,13 +33,7 @@ public class ArticleController {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        return "/board";
+        return "/board/detail";
     }
 
-//    @PostMapping("/update/{boardId}")
-//    public String update(@PathVariable Long boardId,
-//                         @RequestBody BoardUpdateDto boardUpdateDto){
-//        articleService.update(boardId, boardUpdateDto);
-//        return "/board";
-//    }
 }
