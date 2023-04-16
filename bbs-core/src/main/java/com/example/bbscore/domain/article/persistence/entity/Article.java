@@ -1,5 +1,6 @@
 package com.example.bbscore.domain.article.persistence.entity;
 
+import com.example.bbscore.domain.board.persistence.entity.Board;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,9 +17,11 @@ public class Article {
     @Basic
     @Column(name = "id", nullable = false)
     private long id;
-    @Basic
-    @Column(name = "board_id", nullable = false)
-    private long boardId;
+
+    @ManyToOne
+    @JoinColumn(name="board_id")
+    private Board board;
+
     @Basic
     @Column(name = "article_title", nullable = false)
     private String articleTitle;
@@ -49,8 +52,5 @@ public class Article {
     @Basic
     @Column(name = "last_updated_datetime", nullable = false)
     private Date lastUpdatedDatetime;
-    @Basic
-    @Column(name = "board_id1", nullable = false)
-    private long boardId1;
 
 }

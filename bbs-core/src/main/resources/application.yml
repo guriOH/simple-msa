@@ -5,6 +5,13 @@ spring:
     driverClassName: com.mysql.cj.jdbc.Driver
     username: root
     password: root
+
+
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
 #spring.datasource.jdbcUrl=${spring.datasource.board.url}
 #spring.datasource.url=jdbc:mysql://127.0.0.1:3306/multi-board
 #spring.datasource.jdbc-url=jdbc:mysql://127.0.0.1:3306/multi-board

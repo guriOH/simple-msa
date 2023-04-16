@@ -2,6 +2,7 @@ package com.example.bbscore.domain.board.persistence.entity;
 
 
 import com.example.bbscore.base.entity.BaseEntity;
+import com.example.bbscore.domain.article.persistence.entity.Article;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.*;
@@ -10,6 +11,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+
+import java.util.List;
 
 
 @Getter
@@ -35,6 +38,9 @@ public class Board extends BaseEntity {
     private boolean isAllowedComment;
 
     private boolean isAllowedAttach;
+
+    @OneToMany(mappedBy = "board")
+    private List<Article> articles;
 
     public void setId(Long id) {
         this.id = id;

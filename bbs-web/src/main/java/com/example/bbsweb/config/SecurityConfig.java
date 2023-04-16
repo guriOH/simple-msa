@@ -30,7 +30,7 @@ import java.io.IOException;
 @EnableWebSecurity
 public class SecurityConfig {
     private static final String[] PERMIT_API = {
-            "/",
+            "/**",
             "/auth/**",
             "/bbs/**"
     };

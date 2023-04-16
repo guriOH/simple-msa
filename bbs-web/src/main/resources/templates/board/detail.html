@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="~{common/layout/default_layout}">
+
+<th:block layout:fragment="content">
+    <h3 th:text="${articleList.boardName}" class="text-dark page-title mb-3"></h3>
+    <div>
+        <button id="article_crt_btn"  type="button" class="btn btn-primary">New</button>
+    </div>
+    <div class="col-12">
+        <div class="row">
+            <table class="table table-hover table-centered">
+                <thead>
+                <tr class="bg-light">
+                    <th>제목</th>
+                    <th>작성자</th>
+                    <th>등록일</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="article : ${articleList.articles}" style=" cursor: pointer;">
+                    <td>
+                        <span class="font-weight-bold" th:text="${article.title}"></span>
+                    </td>
+                    <td>
+<!--                        <span th:text="${post.registerType.krName}"></span>-->
+                    </td>
+                    <td>
+<!--                        <span th:text="${#temporals.format(article.registeredDatetime, 'yyyy-MM-dd')}"></span>-->
+                        <span th:text="${article.createdAt}"></span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+<!--        <div th:replace="/common/layout/pagination :: footer(${postList.posts})"></div>-->
+<!--        <div sec:authorize="hasAuthority(T(com.forkcrane.platform.domain.user.constant.UserType).ADMIN.name())"-->
+<!--             class="row justify-content-start mt-3">-->
+<!--            <a th:href="@{/board/post/add(id=${postList.board.id})}" class="btn btn-success btn-lg text-white">-->
+<!--                등록하기-->
+<!--            </a>-->
+<!--        </div>-->
+    </div>
+<!--    <th:block th:replace="/board/modal/modal-bbs-register :: modal-bbs-register"/>-->
+    <script>
+
+    </script>
+</th:block>
+</html>

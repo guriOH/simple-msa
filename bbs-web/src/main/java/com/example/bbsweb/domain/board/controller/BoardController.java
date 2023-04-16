@@ -22,7 +22,6 @@ public class BoardController {
 
     private final BoardService boardService;
 
-
     @GetMapping
     public String getList(Model model){
         model.addAttribute("bbs_list", boardService.getBoards());
@@ -32,7 +31,7 @@ public class BoardController {
     @PostMapping("/register")
     public String register(@RequestBody BoardInsertDto boardInsertDto){
         boardService.register(boardInsertDto);
-        return "redirect:/contents/bbs";
+        return "contents/bbs";
     }
 
     @DeleteMapping("/{boardId}")
@@ -40,6 +39,8 @@ public class BoardController {
         boardService.delete(boardId);
         return "/contents/bbs";
     }
+
+
 
 //    @PostMapping("/update/{boardId}")
 //    public String update(@PathVariable Long boardId,

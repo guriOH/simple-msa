@@ -17,7 +17,7 @@ public class CommentController {
 
     @GetMapping("/{boardId}")
     public void search(@PathVariable Long boardId){
-        articleService.getArticles(boardId);
+//        articleService.getArticles(boardId);
     }
 
     @PutMapping("/{articleId}")
