@@ -1,15 +1,17 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html   xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org">
 
-<th:block th:fragment="modal-article-register">
+<th:block th:fragment="modal-article-register(boardId)">
     <div id="modalArticleRegister" class="modal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content rounded-4 shadow">
                 <div class="modal-header">
                     <h5 class="modal-title">글생성</h5>
                 </div>
+<!--                <p th:text="|${boardId}|"></p>-->
                 <div class="modal-body p-4 text-center">
-                    <form id="bbsRegistForm" action="#" name="bbsRegistForm">
+                    <form id="articleRegistForm" action="#" name="articleRegistForm">
                         <div class="form-floating">
                             <input type="name"  class="form-control" id="bbsName" name="name" placeholder="name">
                             <label for="bbsName">Name</label>
@@ -18,7 +20,7 @@
                             <input type="text"  class="form-control" id="contents" name="contents" placeholder="contents">
                             <label for="contents">Contents</label>
                         </div>
-                        <button onclick="regist()" class="w-100 btn btn-lg btn-primary" type="button">Create</button>
+                        <button th:onclick="addArticle([[${boardId}]])" class="w-100 btn btn-lg btn-primary" type="button">Create</button>
                         <div class="modal-footer flex-nowrap p-0">
                             <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0" data-bs-dismiss="modal">취소</button>
                         </div>
@@ -27,9 +29,12 @@
             </div>
         </div>
     </div>
-    <script>
-        const regist = () => {
+    <script th:inline="javascript">
 
+        function addArticle(id) {
+        }
+
+        const regist = () => {
             // const url = `/article/`
             const body = initArticleInfo()
 

@@ -1,6 +1,16 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <th:block th:fragment="sidebarFragment">
+    <style>
+        .sidebar-skeleton{
+            position: fixed;
+            left: 0;
+            height: 100vh;
+            bottom: 0;
+            width: 272px;
+            z-index: -10000;
+        }
+    </style>
     <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
         <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
             <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
@@ -35,6 +45,7 @@
                     <li><a class="dropdown-item" href="#">Sign out</a></li>
                 </ul>
             </div>
+            <div className="sidebar-skeleton"></div>
         </div>
     </div>
 </th:block>

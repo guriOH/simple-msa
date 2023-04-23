@@ -45,8 +45,14 @@
 <!--        </div>-->
     </div>
 <!--    <th:block th:replace="/board/modal/modal-bbs-register :: modal-bbs-register"/>-->
-    <script>
 
+    <th:block th:replace="/article/modal/modal-article-register :: modal-article-register(boardId=${articleList.boardId})"/>
+    <script>
+        $(function (){
+            $('#article_crt_btn').click(() => {
+                $('#modalArticleRegister').modal('show');
+            })
+        })
     </script>
 </th:block>
 </html>
