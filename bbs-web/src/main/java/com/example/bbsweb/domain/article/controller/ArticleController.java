@@ -35,4 +35,8 @@ public class ArticleController {
         return "/board/detail";
     }
 
+    @GetMapping("/detail/{articleId}")
+    public String detailArticle(){
+        return null;
+    }
 }
