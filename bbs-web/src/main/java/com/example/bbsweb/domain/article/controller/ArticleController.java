@@ -26,13 +26,12 @@ public class ArticleController {
 
     @PostMapping("/{boardId}/register")
     public String register(
+            Model model,
             @PathVariable Long boardId,
-            @RequestBody ArticleInsertDto articleInsertDto){
-        try {
-            articleService.register(boardId, articleInsertDto);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+            @RequestBody ArticleInsertDto articleInsertDto) throws Exception {
+        articleService.register(boardId, articleInsertDto);
+
+        model.addAttribute("articleList", articleService.getArticles(boardId));
         return "/board/detail";
     }
 

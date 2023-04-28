@@ -14,7 +14,7 @@ import java.util.Date;
 public class Article {
 
     @Id
-    @Basic
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private long id;
 

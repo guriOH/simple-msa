@@ -62,27 +62,28 @@ public class ArticleService {
 
     }
 
-    public void register(Long boardId, ArticleInsertDto articleInsertDto) throws Exception {
+    public void register(Long boardId, ArticleInsertDto articleInsertDto){
 
-        Optional<Board> boardOptional = boardRepository.findById(boardId);
+        Board board = boardRepository.findById(boardId).orElse(null);
+        if(!ObjectUtils.isEmpty(board)){
+            Article article = new Article();
+            article.setBoard(board);
+            article.setArticleTitle(articleInsertDto.getArticleTitle());
+            article.setArticleContents(articleInsertDto.getArticleContents());
+            article.setArticleCategory(articleInsertDto.getArticleCategory());
+            article.setHitCount(0);
+            article.setIsPublic(articleInsertDto.getIsPublic());
+            article.setIsDeleted(false);
 
-        if(!boardOptional.isPresent()) throw new Exception("Board not found");
+            article.setRegisteredUserNumber(1L);
+            article.setRegisteredDatetime(new Date());
+            article.setLastUpdatedUserNumber(1L);
+            article.setLastUpdatedDatetime(new Date());
 
-        Article article = new Article();
-        article.setBoard(boardOptional.get());
-        article.setArticleTitle(articleInsertDto.getArticleTitle());
-        article.setArticleContents(articleInsertDto.getArticleContents());
-        article.setArticleCategory(articleInsertDto.getArticleCategory());
-        article.setHitCount(0);
-        article.setIsPublic(articleInsertDto.getIsPublic());
-        article.setIsDeleted(false);
+            articleRepository.save(article);
 
-        article.setRegisteredUserNumber(1L);
-        article.setRegisteredDatetime(new Date());
-        article.setLastUpdatedUserNumber(1L);
-        article.setLastUpdatedDatetime(new Date());
+        }
 
-        articleRepository.save(article);
     }
 
 
